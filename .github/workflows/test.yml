@@ -7,5 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Test Workflow
     steps:
+      - name: Checkout Service
+        uses: actions/checkout@v2
 
       - uses: ./.github/actions/doSomething
