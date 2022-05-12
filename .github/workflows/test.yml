@@ -4,6 +4,7 @@ on:
 
 jobs:
   release:
+    runs-on: ubuntu-latest
     name: Test Workflow
     steps:
       - name: Checkout Service
