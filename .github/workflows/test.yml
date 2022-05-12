@@ -4,8 +4,7 @@ on:
 
 jobs:
   release:
-    name: Build and Release
-    runs-on: [ self-hosted ]
+    name: Test Workflow
     steps:
       - name: Checkout Service
         uses: actions/checkout@v2
