@@ -1,0 +1,9 @@
+
+name: do something
+description: does something
+runs:
+  using: "composite"
+  steps:
+    - name: Echo something
+      run: echo "test"
+      shell: bash
