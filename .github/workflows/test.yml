@@ -13,8 +13,10 @@ jobs:
         with:
           repository: abrenn/githunb-actions-playground
           ref: main
-
+      - name: Try to fail
+        run: exit 1
       - uses: ./.github/actions/doSomething
+        if: failure()
 
   releaseAgaian:
     runs-on: ubuntu-latest
@@ -27,4 +29,6 @@ jobs:
           ref: main
 
 
+      - name: Try to fail
+        run: exit 1
       - uses: ./.github/actions/doSomething
