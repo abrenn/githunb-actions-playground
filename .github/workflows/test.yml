@@ -20,7 +20,11 @@ jobs:
     runs-on: ubuntu-latest
     name: Test Workflow
     steps:
-      - name: Checkout Service
-        uses: actions/checkout@v2
+      - name: Checkout Actions
+        uses: actions/checkout@v3
+        with:
+          repository: abrenn/githunb-actions-playground
+          ref: main
+
 
       - uses: ./.github/actions/doSomething
