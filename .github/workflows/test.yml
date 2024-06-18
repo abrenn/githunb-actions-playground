@@ -1,34 +1,8 @@
 name: Test something
 on:
-  workflow_call:
   workflow_dispatch:
 
 jobs:
-  release:
-    runs-on: ubuntu-latest
-    name: Test Workflow
-    steps:
-      - name: Checkout Actions
-        uses: actions/checkout@v3
-        with:
-          repository: abrenn/githunb-actions-playground
-          ref: main
-      - name: Try to fail
-        run: exit 1
-      - uses: ./.github/actions/doSomething
-        if: failure()
-
-  releaseAgaian:
-    runs-on: ubuntu-latest
-    name: Test Workflow
-    steps:
-      - name: Checkout Actions
-        uses: actions/checkout@v3
-        with:
-          repository: abrenn/githunb-actions-playground
-          ref: main
-
-
-      - name: Try to fail
-        run: exit 1
-      - uses: ./.github/actions/doSomething
+  testing:
+    uses: abrenn/githunb-actions-playground/.github/workflows/test2.yml
+    secrets: inherit

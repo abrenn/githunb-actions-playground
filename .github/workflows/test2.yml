@@ -1,0 +1,11 @@
+name: Test something
+on:
+  workflow_call:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    name: Test Workflow
+    steps:
+      - run:
+          echo ${{ secrets.MY_SECRET}}
