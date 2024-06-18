@@ -1,7 +1,9 @@
 name: Test something
 on:
   workflow_call:
-
+    secrets:
+      MY_SECRET:
+        required: true
 jobs:
   release:
     runs-on: ubuntu-latest
