@@ -5,5 +5,4 @@ on:
 jobs:
   testing:
     uses: abrenn/githunb-actions-playground/.github/workflows/test2.yml@main
-    secrets:
-      MY_SECRET: ${{ secrets.MY_SECRET }}
+    secrets: inherit
