@@ -16,12 +16,18 @@ jobs:
       - name: read env secrets
         id: read-env-secrets
         run: |
-          my-test=`echo -n ${{ secrets.MY_TEST }} | base64 -w 0`
-          echo "name=my-test::$my-test >> $GITHUB_OUTPUT"
+          MULTI_LINES_TEXT="this is line one \n
+                            this is line two \n
+                            this is line three \n"    
+
+          echo "MULTI_LINES_TEXT_ENV_VAR<<EOF" >> $GITHUB_ENV
+          # here we can place the command that will generate multi-line text
+          echo $MULTI_LINES_TEXT >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
 
   write-envs-to-file:
     needs: [ setup ]
     uses: abrenn/githunb-actions-playground/.github/workflows/test2.yml@main
     with:
-      variable: ${{ needs.setup.outputs.my-test }}
+      variable: ${{ env.MULTI_LINES_TEXT_ENV_VAR }}
     secrets: inherit
