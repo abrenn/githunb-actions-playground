@@ -1,9 +1,14 @@
 
 name: do something
 description: does something
+inputs:
+  my-test:
+    description: the secret
+    required: true
+
 runs:
   using: "composite"
   steps:
     - name: Echo something
-      run: echo "test"
+      run: echo ${{ inputs.my-test }}
       shell: bash

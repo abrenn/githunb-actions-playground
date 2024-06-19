@@ -3,12 +3,24 @@ name: Test something
 on:
   workflow_dispatch:
     secrets:
-      TEST:
+      MY_TEST:
         required: true
 
 jobs:
-  testing:
+  setup:
+    environment: dev
+    runs-on: ubuntu-latest
+    outputs:
+      my-test: ${{steps.read-env-secrets.outputs.my-test }}
+    steps:
+      - name: read env secrets
+        id: read-env-secrets
+        run: |
+          echo "::set-output name=my-test::${{ secrets.MY_TEST }}
+
+  write-envs-to-file:
+    needs: [ setup ]
     uses: abrenn/githunb-actions-playground/.github/workflows/test2.yml@main
     with:
-      environment: dev
+      variable: ${{ needs.setup.outputs.my-test }}
     secrets: inherit

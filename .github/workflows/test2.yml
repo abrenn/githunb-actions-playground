@@ -2,7 +2,7 @@ name: Test something
 on:
   workflow_call:
     inputs:
-      environment:
+      variable:
         description: the env
         type: string
 
@@ -10,7 +10,6 @@ jobs:
   release:
     runs-on: ubuntu-latest
     name: Test Workflow
-    environment: ${{ inputs.environment }}
     steps:
       - run:
-          echo ${{ secrets.MY_SECRET}}
+          echo ${{ inputs.variable }}
