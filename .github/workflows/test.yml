@@ -11,12 +11,12 @@ jobs:
     environment: dev
     runs-on: ubuntu-latest
     outputs:
-      my-test: ${{steps.read-env-secrets.outputs.my-test }}
+      my-test: ${{ steps.read-env-secrets.outputs.my-test }}
     steps:
       - name: read env secrets
         id: read-env-secrets
         run: |
-          echo "::set-output name=my-test::${{ secrets.MY_TEST }}"
+          echo "name=my-test::${{ secrets.MY_TEST }} >> $GITHUB_OUTPUT"
 
   write-envs-to-file:
     needs: [ setup ]
