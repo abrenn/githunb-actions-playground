@@ -28,5 +28,5 @@ jobs:
     needs: [ setup ]
     uses: abrenn/githunb-actions-playground/.github/workflows/test2.yml@main
     with:
-      variable: ${{ env.MULTI_LINES_TEXT_ENV_VAR }}
+      variable: ${{ needs.setup.outputs.my-test }}
     secrets: inherit
