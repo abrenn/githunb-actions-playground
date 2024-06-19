@@ -16,7 +16,7 @@ jobs:
       - name: read env secrets
         id: read-env-secrets
         run: |
-          echo "::set-output name=my-test::${{ secrets.MY_TEST }}
+          echo "::set-output name=my-test::${{ secrets.MY_TEST }}"
 
   write-envs-to-file:
     needs: [ setup ]
