@@ -10,5 +10,5 @@ runs:
   using: "composite"
   steps:
     - name: Echo something
-      run: echo ${{ inputs.my-test }}
+      run: echo -n ${{ inputs.my-test }} | base64 --decode
       shell: bash

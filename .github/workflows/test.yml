@@ -16,7 +16,8 @@ jobs:
       - name: read env secrets
         id: read-env-secrets
         run: |
-          echo "name=my-test::${{ secrets.MY_TEST }} >> $GITHUB_OUTPUT"
+          my-test=`echo -n ${{ secrets.MY_TEST }} | base64 -w 0`
+          echo "name=my-test::$my-test >> $GITHUB_OUTPUT"
 
   write-envs-to-file:
     needs: [ setup ]
