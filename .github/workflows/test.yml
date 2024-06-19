@@ -1,14 +1,13 @@
 name: Test something
+
 on:
   workflow_dispatch:
-    inputs:
-      message:
+    secrets:
+      TEST:
         required: true
-        description: something
-
 
 jobs:
   testing:
     uses: abrenn/githunb-actions-playground/.github/workflows/test2.yml@main
-    secrets:
-      MY_SECRET: ${{ inputs.message }}
+    environment: dev
+    secrets: inherit
