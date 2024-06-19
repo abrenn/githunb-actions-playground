@@ -11,7 +11,7 @@ jobs:
     environment: dev
     runs-on: ubuntu-latest
     outputs:
-      my-test: ${{ steps.read-env-secrets.outputs.my-test }}
+      my-test: ${{ steps.read-env-secrets.outputs.MULTI_LINES_TEXT_ENV_VAR }}
     steps:
       - name: read env secrets
         id: read-env-secrets
@@ -20,10 +20,9 @@ jobs:
                             this is line two \n
                             this is line three \n"    
 
-          echo "MULTI_LINES_TEXT_ENV_VAR<<EOF" >> $GITHUB_ENV
-          # here we can place the command that will generate multi-line text
-          echo $MULTI_LINES_TEXT >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
+          echo "MULTI_LINES_TEXT_ENV_VAR<<EOF" >> $GITHUB_OUTPUT
+          echo $MULTI_LINES_TEXT >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
 
   write-envs-to-file:
     needs: [ setup ]
