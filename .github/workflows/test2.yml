@@ -1,13 +1,16 @@
 name: Test something
 on:
   workflow_call:
-    secrets:
-      MY_SECRET:
-        required: true
+    inputs:
+      environment:
+        description: the env
+        type: string
+
 jobs:
   release:
     runs-on: ubuntu-latest
     name: Test Workflow
+    environment: $inputs.environment
     steps:
       - run:
           echo ${{ secrets.MY_SECRET}}
